@@ -2,7 +2,7 @@
 const data = JSON.parse(localStorage.getItem("tab_scores"));
 const taille = data.length
 let couleur = ""
-let status = ""
+let statusV = ""
 
 // Ajout des données du stockage local dans le tableau de données
 for(var j = 0; j < localStorage.getItem("tab_scores").length; j++) {
@@ -20,18 +20,18 @@ if(taille.length === 0) {
     // Si le tableau des scores contient des données, ajout des données dans le tableau HTML correspondant
     for (var i = 0; i < taille; i++) {
         // Détermination de la couleur du texte en fonction du statut de la partie
-        if(data[i].status === 'Gagné') {
+        if(data[i].status == 'true') {
             couleur = '#26cc26';
         } else {
             couleur = 'red'
         }
         // Détermination du statut de la partie (gagné ou perdu)
         if(data[i].r === true) {
-            status = "Gagner"
+            statusV = "Gagner"
         } else {
-            status = "Perdu"
+            statusV = "Perdu"
         }
         // Ajout des données dans le tableau HTML correspondant
-        tableau.insertAdjacentHTML('beforeend', <tr><td>${data[i].pseudo}</td><td>${data[i].dificulte}</td><td>${data[i].nbrEssai}</td> <td style="background-color:${couleur}; color:#FFFFFF">${data[i].status}</td></tr>)
+        tableau.insertAdjacentHTML('beforeend', <tr><td>${data[i].pseudo}</td><td>${data[i].dificulte}</td><td>${data[i].nbrEssai}</td> <td style="background-color:${couleur}; color:#FFFFFF">${statusV}</td></tr>)
     }
 }
